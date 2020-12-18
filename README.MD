@@ -12,7 +12,9 @@
 
 ## 架构
 
-<img src="C:\Users\SiegeLion\AppData\Roaming\Typora\typora-user-images\image-20201218223347229.png" alt="image-20201218223347229" style="zoom: 50%;" />
+<img src="https://gitee.com/hanmengnan/images-of-notes/raw/master//notes/image-20201218223347229.png" alt="image-20201218223347229" style="zoom:50%;" />
+
+
 
 
 
@@ -30,6 +32,7 @@
 ### 设备监控
 
 1. 设备列表
+
 2. 可以手动添加设备
 3. 设备种类、名称、位置、运行时间
 
