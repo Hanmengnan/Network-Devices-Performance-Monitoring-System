@@ -5,7 +5,7 @@
 
 模块：Scapy、Snmp
 
-集成：Npcap（Windows）、TCP（dumpLinux）
+集成：Npcap（Windows）、TCPdump（Linux）
 
 ## 功能
 
@@ -22,8 +22,8 @@
 ### 硬件性能详情
 
 1. CPU
-    1. 用户CPU百分比
-    2. 系统CPU百分比
+    1. CPU百分比
+    2. 核心数
 2. 内存
     1. 内存大小
     2. 占用率
