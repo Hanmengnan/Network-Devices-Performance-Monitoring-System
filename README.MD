@@ -5,23 +5,34 @@
 ## 主要技术
 
 - 后端：
-    - 确定：Flask、Psutil
-    - 待定：Scapy、Snmp、Npcap（Windows）、TCPdump（Linux）
+    - 确定：
+        - Server : Flask , Telegraf , Psutil 
+        - Agent : Telegraf , Psutil 
+    - 待定：
+        - 性能相关 : Snmp 
+        - 网络相关 : Scapy , Npcap ( Windows ) , TCPdump ( Linux )
 - 前端：
     - 确定：Vue
+- 数据库：InfluxDB、MongoDB
 
 ## 架构
 
-<img src="https://gitee.com/hanmengnan/images-of-notes/raw/master//notes/image-20201218223347229.png" alt="image-20201218223347229" style="zoom:50%;" />
+<img src="https://gitee.com/hanmengnan/images-of-notes/raw/master//notes/image-20201219112401641.png" alt="image-20201219112401641" style="zoom:50%;" />
 
 
 
 
 
-架构主要由Server端与Agent端组成：
+架构主要由 Server 端与 Agent 端组成：
 
-- Server：负责收集Agent端的数据，同时本机也作为一台Agent设备收集数据。将搜集到的数据，以WEB可视化形式展示。
-- Agent：负责获取本机数据，并将其作为“Server的请求”的回复提供给Server。
+- Server : 
+    - 暂用：
+        1. 利用 **Flask** 框架搭建 Web 服务器功能，起数据展示功能，同时本机也作为一台 Agent 采集数据。
+        2. 利用 **MongoDB** 作为辅助数据库，存储其他数据。 
+    - 考虑：换用 **Go** 语言相关的 Web 框架。
+- Agent : 
+    - 确定：主要利用 **Telegraf** , 辅以 **Python 编写的 Psutil 脚本** 采集本机性能数据 ，存入 **InfluxDB** 与 **MongoDB** 。
+    - 待定：是否在数据输出时加入聚合插件。
 
 
 
@@ -29,67 +40,75 @@
 
 ### 登录
 
-### 设备监控
+### 监控
 
-1. 设备列表
+- 系统信息
 
-2. 可以手动添加设备
-3. 设备种类、名称、位置、运行时间
+    - CPU
+        - 型号
+        - 核心数
+        - 占用率
+        - 进程数
+    - 磁盘
+        - 磁盘容量
+        - 可用空间
+        - 占用率
+        - IO次数
+        - IO数据量
+    - 内存
+        - 内存大小
+        - 占用率
+        - 虚拟内存
+        - Cache大小
+    - 网络
+        - 时延
+        - 带宽
+        - 丢包率
+        - IP
+        - TCP
+        - UDP
+    - 进程
+        - 进程名称
+        - 内存使用率
+        - CPU使用率
+        - 图表
 
-### 进程监控
+- 服务器
 
-1. 进程名称
-2. 内存使用率
-3. CPU使用率
-4. 图表
+    - NGINX
+    - Apache
+    - Tomcat
 
-### 端口监控
+- 数据库
 
-1. 状态
-2. 进程
+    - MySQL
+    - SQL Server
+    - Redis
 
-### Docker 监控
+- 容器
 
-### 接口监控
+    - Docker
+    - K8s
+
+- 端口监控
+
+    - 状态
+
+    - 进程
+
+- 接口监控
 
 ### 展示看板
 
-1. 大屏展示
-2. 公众展示
+- 大屏展示
 
-### 硬件性能详情
-
-1. CPU
-    1. CPU百分比
-    2. 核心数
-    3. 型号
-    4. 进程数
-2. 内存
-    1. 内存大小
-    2. 占用率
-    3. 虚拟内存
-3. 磁盘
-    1. 磁盘容量
-    2. 可用空间
-    3. 占用率
-    4. IO次数
-    5. IO数据量
-
-### 网络性能详情
-
-1. 概览
-    1. 时延
-    2. 带宽
-    3. 丢包率
-2. 详情
-    1. IP
-    2. TCP
-    3. UDP
+- 公众展示
 
 ### 日志
 
-1. 记录
-2. 分析
+- 记录
+
+- 分析
 
 ### 预警
 

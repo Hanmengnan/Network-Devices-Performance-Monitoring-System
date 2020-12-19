@@ -1,5 +1,5 @@
 from snmp_cmds import *
-from paramer import *
+from Agent.util.paramer import *
 
 
 class MachineInfo:
